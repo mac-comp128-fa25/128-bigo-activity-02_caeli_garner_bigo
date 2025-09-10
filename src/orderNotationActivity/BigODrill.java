@@ -52,13 +52,28 @@ public class BigODrill {
     /**
      * (4)
      * Demonstrates an algorithm with TODO: What is the O( ? ) of the following code?
+     * O(n) assuming n is the number of numbers in the rectangular array
      * @param numArr -  a two dimensional rectangular integer array a.k.a 2D matrix
      * @return a double that represents the sparsity of numArr
      */
     public static double sparsity(int[][] numArr) {
         //TODO: Write the code that calculates and returns the sparsity of the input
         // rectangular integer array numArr
-        return 0; // Placeholder to make it compile.
+        int[] rowSparcity = new int[numArr.length];
+        for (int row = 0; row < numArr.length; row++) {
+            int zerosInCol = 0;
+            for (int col = 0; col < numArr[row].length; col++) {
+                if (numArr[row][col] == 0) {
+                    zerosInCol += 1;
+                }
+            }
+            rowSparcity[row] = zerosInCol/numArr[row].length;
+        }
+        double total = 0;
+        for (int i = 0; i < rowSparcity.length; i++) {
+            total += rowSparcity[i];
+        }
+        return total/numArr.length;
 
     }
 
